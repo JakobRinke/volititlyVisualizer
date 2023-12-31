@@ -22,8 +22,11 @@ class AudioStream(object):
 
         # stream object
         self.p = pyaudio.PyAudio()
-        for i in range(self.p.get_device_count()):
-            if "stereo" in self.p.get_device_info_by_index(i)['name'].lower():
+        for i in range(self.p.get_device_count()):#
+            print( )
+            print(self.p.get_device_info_by_index(i)['name'])
+            print(" ")
+            if "stereo" in self.p.get_device_info_by_index(i)['name'].lower() or "pulse" in self.p.get_device_info_by_index(i)['name'].lower():
                 self.device = i
                 break
         self.stream = self.p.open(
